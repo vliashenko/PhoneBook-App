@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
+import UserMenu from 'components/UserMenu/UserMenu';
 import Button from '@mui/material/Button';
 import { Header, UserInfo, UserLogo, UserName } from "./AppBar.styled";
 import userlogo from "./img/user-icon-png-pnglogocom-133466.png";
@@ -7,14 +8,13 @@ import userlogo from "./img/user-icon-png-pnglogocom-133466.png";
 const AppBar = () => {
     const dispatch = useDispatch();
     const user = useSelector(authSelectors.getUsername);
+    const email = useSelector(authSelectors.getUserEmail);
 
     return (
         <Header>
             <UserInfo>
                 <UserLogo src={userlogo} alt="logo"/>
-                <UserName>
-                    {`Hello, ${user}!`}
-                </UserName>
+                <UserMenu name={user} email={email}/>
             </UserInfo>
 
             <Button 
