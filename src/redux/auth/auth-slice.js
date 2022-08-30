@@ -13,12 +13,23 @@ const initialState = {
 const authSlice = createSlice({
     name: "contacts",
     initialState,
+    reducers: {
+        resetStatus (state, _) {
+            state.status = null
+        }
+    },
     extraReducers: {
         [authOperations.register.fulfilled]: (state, action) => {
             state.user = action.payload.user;
             state.token = action.payload.token;
             state.isLoggedIn = true;
             state.status = "fulfilled";
+        },
+        [authOperations.register.pending]: (state, action) => {
+            state.status = "pending"
+        },
+        [authOperations.register.rejected]: (state, action) => {
+            state.status = "rejected"
         },
         [authOperations.login.fulfilled]: (state, action) => {
             state.user = action.payload.user;
@@ -44,5 +55,7 @@ const authSlice = createSlice({
         },
     }
 });
+
+export const { resetStatus } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -1,11 +1,14 @@
 import { useState } from 'react';
-import { useDispatch } from "react-redux"
-import { authOperations } from 'redux/auth';
+import { useDispatch, useSelector } from "react-redux"
+import { authOperations, authSelectors } from 'redux/auth';
+import { resetStatus } from 'redux/auth/auth-slice';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import ButtonSpinner from 'components/ButtonSpinner/ButtonSpinner';
 import { inputStyle, Container, buttonStyle, Title, Form, StyledLink } from './Login.styled';
 
 const Login = () => {
+    const status = useSelector(authSelectors.getStatus);
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -60,10 +63,13 @@ const Login = () => {
                     variant="outlined" 
                     size="large"
                 >
-                    Authorize
+                    {status === "pending" ? <ButtonSpinner/> : "Authorize"}
                 </Button>
 
-                <StyledLink to={"/register"}>
+                <StyledLink 
+                    onClick={() => dispatch(resetStatus())}
+                    to={"/register"}
+                >
                     Create a new account
                 </StyledLink>
             </Form>
