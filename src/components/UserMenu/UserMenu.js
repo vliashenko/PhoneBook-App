@@ -1,4 +1,5 @@
 import { UserMail, UserName } from "./UserMenu.styled";
+import PropTypes from "prop-types";
 
 const UserMenu = ({ name, email }) => {
     return (
@@ -13,5 +14,10 @@ const UserMenu = ({ name, email }) => {
         </>
     );
 };
+
+UserMenu.propTypes = {
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+}
 
 export default UserMenu;
