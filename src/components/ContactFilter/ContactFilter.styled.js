@@ -6,7 +6,7 @@ export const inputStyle = {
 };
 
 export const buttonStyle = {
-    width: "40%",
+    width: "50vw",
     padding: "14.5px 14px",
     margin: "10px 10px"
 };

@@ -16,8 +16,7 @@ const ContactFilter = ({ isOpen, openModal, closeModal }) => {
         <Container>
             <TextField
                     placeholder="Find your contacts by name "
-                    id="outlined-required"
-                    label="Filter"
+                    id="outlined-required"                    
                     name="filter"
                     value={filter}
                     onChange={(e) => dispatch(setFilter({ filter: e.target.value }))}

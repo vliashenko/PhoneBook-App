@@ -32,9 +32,6 @@ const Register = () => {
     const handleSubmit = e => {
         e.preventDefault();
         dispatch(authOperations.register({ name, email, password }));
-        setEmail("");
-        setPassword("");
-        setName("")
     };
 
     return (
@@ -49,6 +46,7 @@ const Register = () => {
                     value={name}
                     onChange={handleChange}
                     style={inputStyle}
+                    helperText={status === "rejected" && "Incorrect entry"}
                 />
 
                 <TextField
@@ -83,7 +81,7 @@ const Register = () => {
                     onClick={() => dispatch(resetStatus())}
                     to={"/login"}
                 >
-                    Create new account
+                    Login
                 </StyledLink>
 
             </Form>

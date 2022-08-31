@@ -42,11 +42,12 @@ const ContactForm = ({ onClose }) => {
         if(checker.length === 0){
             dispatch(contactsOperations.addNewContact({ name, number }))
         } else {
-            toast.warn(`Contact with name ${name} is already in your phonebook!`)
+            toast.warn(`Contact with name ${name} is already in your phonebook!`);
+            
         };
 
         if( status === "rejected" ){
-            onClose();
+            toast.error("Something went wrong(")
         } else if( status === "fulfilled" ){
             toast.success("Contact was successfuly added!")
             setName("");

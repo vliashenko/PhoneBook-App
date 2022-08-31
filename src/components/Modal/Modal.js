@@ -21,15 +21,9 @@ const Modal = ({ children, onClose }) => {
         return () => window.removeEventListener("keydown", handleKeyDown)
     },[onClose, handleKeyDown])
 
-    const handleBackdropClick = (e) => {
-        if( e.currentTarget === e.target) {
-            onClose();
-        }
-    };
-
     return (
         createPortal(
-            <ContainerBackdrop onClick={handleBackdropClick}>
+            <ContainerBackdrop>
                 <ModalWindow >
                     {children}
                 </ModalWindow>

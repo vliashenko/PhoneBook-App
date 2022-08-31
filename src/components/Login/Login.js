@@ -29,8 +29,6 @@ const Login = () => {
     const handleSubmit = e => {
         e.preventDefault();
         dispatch(authOperations.login({ email, password }));
-        setEmail("");
-        setPassword("");
     };
 
     return (
@@ -45,6 +43,7 @@ const Login = () => {
                     value={email}
                     onChange={handleChange}
                     style={inputStyle}
+                    helperText={status === "rejected" && "Incorrect entry"}
                 />
 
                 <TextField
@@ -55,6 +54,7 @@ const Login = () => {
                     value={password}
                     onChange={handleChange}
                     style={inputStyle}
+                    helperText={status === "rejected" && "Incorrect entry"}
                 />
 
                 <Button 
