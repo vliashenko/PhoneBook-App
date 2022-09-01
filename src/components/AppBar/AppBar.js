@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
 import UserMenu from 'components/UserMenu/UserMenu';
 import Button from '@mui/material/Button';
-import { Header, UserInfo, UserLogo, UserName } from "./AppBar.styled";
+import { Header, UserInfo, UserLogo } from "./AppBar.styled";
 import userlogo from "./img/user-icon-png-pnglogocom-133466.png";
 
 const AppBar = () => {

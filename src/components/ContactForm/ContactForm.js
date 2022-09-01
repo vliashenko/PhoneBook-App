@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 
 const ContactForm = ({ onClose }) => {
     const contacts = useSelector(contactsSelectors.getContacts);
-    const status = useSelector(contactsSelectors.getAddContactStatus);
+    const status = useSelector(contactsSelectors.getStatus);
     const dispatch = useDispatch();
     const [ name, setName ] = useState("");
     const [ number, setNumber ] = useState("");
@@ -37,12 +37,13 @@ const ContactForm = ({ onClose }) => {
         if(name.trim().length === 0 || number.trim().length === 0){
             toast(`Please fill all fields!`);
             return;
-         } 
+        } 
 
         if(checker.length === 0){
             dispatch(contactsOperations.addNewContact({ name, number }))
         } else {
             toast.warn(`Contact with name ${name} is already in your phonebook!`);
+            return;
         };
 
         if( status === "rejected" ){
