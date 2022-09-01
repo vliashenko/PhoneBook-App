@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 
 const ContactForm = ({ onClose }) => {
     const contacts = useSelector(contactsSelectors.getContacts);
-    const status = useSelector(contactsSelectors.getStatus);
+    const status = useSelector(contactsSelectors.getAddContactStatus);
     const dispatch = useDispatch();
     const [ name, setName ] = useState("");
     const [ number, setNumber ] = useState("");
@@ -43,7 +43,6 @@ const ContactForm = ({ onClose }) => {
             dispatch(contactsOperations.addNewContact({ name, number }))
         } else {
             toast.warn(`Contact with name ${name} is already in your phonebook!`);
-            
         };
 
         if( status === "rejected" ){

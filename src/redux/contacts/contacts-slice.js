@@ -4,6 +4,7 @@ import contactOperations from "./contacts-operations";
 const initialState = {
     contacts: null,
     status: null,
+    addContactStatus: null,
     error: null
 }
 
@@ -20,13 +21,13 @@ const contactsSlice = createSlice({
         },
         [contactOperations.addNewContact.fulfilled] (state, action) {
             state.contacts.push(action.payload)
-            state.status = action.meta.requestStatus
+            state.addContactStatus = action.meta.requestStatus
         },
         [contactOperations.addNewContact.pending] (state, action) {
-            state.status = action.meta.requestStatus
+            state.addContactStatus = action.meta.requestStatus
         },
         [contactOperations.addNewContact.rejected] (state, action) {
-            state.status = action.meta.requestStatus
+            state.addContactStatus = action.meta.requestStatus
             state.error = action.payload
         },
         [contactOperations.deleteContact.fulfilled] (state, action) {
