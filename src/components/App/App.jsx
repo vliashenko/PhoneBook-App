@@ -22,7 +22,7 @@ export const App = () => {
   },[dispatch]);
   
   return (
-    <Router basename="/goit-react-hw-08-phonebook/">
+    <Router basename="/PhoneBook-App/">
           <Suspense fallback={<Loader/>}>
             <Container>
                 <Routes>
